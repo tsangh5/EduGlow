@@ -14,7 +14,10 @@ We originally started making a NextJS app making our website stylized in TailWin
 Connecting a prompt to a well-crafted slide portfolio learning googlescript in a time crunch. connecting all of our API's successfully making a website that we believe has serious positive implications for this world
 
 ## 🧠 What we learned
-google script OpenAI integration GoogleSearch API Google Slides API
+- google script
+- OpenAI integration
+- GoogleSearch API
+- Google Slides API
 
 ## 🚀 What's next for EduGlow
 Creating an additional section before generative AI to add or delete slides and add or delete more information.
