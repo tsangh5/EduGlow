@@ -2,14 +2,15 @@ function doGet() {
     return HtmlService.createHtmlOutputFromFile('Index');
 }
 function generateSlideFromPrompt(prompt = "top f1 teams") {
-    const API_KEY = "YOUR_API_KEY_HERE";
+    const API_KEY = "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";
     const MODEL_TYPE = "gpt-4"; //chatGPT model
-    const presentation = SlidesApp.create(prompt.substring(0, 100)); // Use the prompt for the filename, limited to 100 characters to avoid errors
+    let TitleShort = getTitlePrompt(prompt)
+    const presentation = SlidesApp.create(TitleShort); // Use the prompt for the filename, limited to 100 characters to avoid errors
     const slide = presentation.getSlides()[0]; // Get the first slide that's automatically created with the presentation
     
     // Set the title of the first slide to the prompt
     const titleShape = slide.getShapes()[0]; // Assuming the first shape is the title box
-    titleShape.getText().setText(prompt);
+    titleShape.getText().setText(getTitlePrompt(TitleShort));
 
     const temperature = 0;
     const maxTokens = 2060;
@@ -53,7 +54,7 @@ function generateSlideFromPrompt(prompt = "top f1 teams") {
 }
 
 function getimagePrompt(paragraph = "1. Mercedes-AMG Petronas Formula One Team: This team has been a dominant force in Formula One racing for several years. They have won multiple Constructors' Championships, largely due to the success …") {
-    const API_KEY = "YOUR_API_KEY_HERE";
+    const API_KEY = "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";
     const MODEL_TYPE = "gpt-4"; //chatGPT model
 
     
@@ -89,8 +90,45 @@ function getimagePrompt(paragraph = "1. Mercedes-AMG Petronas Formula One Team: 
 
 }
 
+function getTitlePrompt(paragraph = "1. Mercedes-AMG Petronas Formula One Team: This team has been a dominant force in Formula One racing for several years. They have won multiple Constructors' Championships, largely due to the success …") {
+    const API_KEY = "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";
+    const MODEL_TYPE = "gpt-4"; //chatGPT model
+
+    
+    const temperature = 0;
+    const maxTokens = 2060;
+
+    const requestBody = {
+        model: MODEL_TYPE,
+        messages: [{role: "user", content: "Generate a short 1-2 word google title related to " + paragraph + " and just say the title nothing else other than the title"}],
+        temperature,
+        max_tokens: maxTokens,
+    };
+
+    const requestOptions = {
+        method: "post",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + API_KEY,
+        },
+        payload: JSON.stringify(requestBody),
+        muteHttpExceptions: true
+    };
+
+    const response = UrlFetchApp.fetch("https://api.openai.com/v1/chat/completions", requestOptions);
+    const responseText = response.getContentText();
+    const json = JSON.parse(responseText);
+    const generatedText = json['choices'][0]['message']['content'];
+    console.log(generatedText)
+
+    return generatedText
+
+
+
+}
+
 function getImageUrl(prompt = "Mercedes-AMG F1") {
-    var apiKey = "YOUR_API_KEY_HERE";
+    var apiKey = 'AIzaSyBi0C1K4t_K45v-4rU3LgWqEA4qIQXK5v8';
     var searchEngineId = '43bd2b5998b754bf7';
     var query = prompt; // This could be a static query or based on the prompt/content
     var url = "https://www.googleapis.com/customsearch/v1?key=" + apiKey + "&cx=" + searchEngineId + "&searchType=image&q=" + encodeURIComponent(query);
@@ -109,7 +147,7 @@ function getImageUrl(prompt = "Mercedes-AMG F1") {
 }
 
 function generateFlashcardsfromPrompt(prompt) {
-    const API_KEY = "YOUR_API_KEY_HERE";
+    const API_KEY = "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";
     const MODEL_TYPE = "gpt-4"; // ChatGPT model
     const temperature = 1;
     const maxTokens = 150;
