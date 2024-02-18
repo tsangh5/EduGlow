@@ -2,7 +2,7 @@ function doGet() {
     return HtmlService.createHtmlOutputFromFile('Index');
 }
 function generateSlideFromPrompt(prompt = "top f1 teams") {
-    const API_KEY = "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";
+    const API_KEY = "YOUR_API_KEY_HERE";
     const MODEL_TYPE = "gpt-4"; //chatGPT model
     let TitleShort = getTitlePrompt(prompt)
     const presentation = SlidesApp.create(TitleShort); // Use the prompt for the filename, limited to 100 characters to avoid errors
@@ -54,7 +54,7 @@ function generateSlideFromPrompt(prompt = "top f1 teams") {
 }
 
 function getimagePrompt(paragraph = "1. Mercedes-AMG Petronas Formula One Team: This team has been a dominant force in Formula One racing for several years. They have won multiple Constructors' Championships, largely due to the success …") {
-    const API_KEY = "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";
+    const API_KEY = "YOUR_API_KEY_HERE";
     const MODEL_TYPE = "gpt-4"; //chatGPT model
 
     
@@ -91,7 +91,7 @@ function getimagePrompt(paragraph = "1. Mercedes-AMG Petronas Formula One Team: 
 }
 
 function getTitlePrompt(paragraph = "1. Mercedes-AMG Petronas Formula One Team: This team has been a dominant force in Formula One racing for several years. They have won multiple Constructors' Championships, largely due to the success …") {
-    const API_KEY = "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";
+    const API_KEY = "YOUR_API_KEY_HERE";
     const MODEL_TYPE = "gpt-4"; //chatGPT model
 
     
@@ -147,7 +147,7 @@ function getImageUrl(prompt = "Mercedes-AMG F1") {
 }
 
 function generateFlashcardsfromPrompt(prompt) {
-    const API_KEY = "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";
+    const API_KEY = "YOUR_API_KEY_HERE";
     const MODEL_TYPE = "gpt-4"; // ChatGPT model
     const temperature = 1;
     const maxTokens = 150;
