@@ -2,7 +2,7 @@ function doGet() {
     return HtmlService.createHtmlOutputFromFile('Index');
 }
 function generateSlideFromPrompt(prompt = "top f1 teams") {
-    const API_KEY = "YOUR_API_KEY HERE";
+    const API_KEY = "YOUR_API_KEY_HERE";
     const MODEL_TYPE = "gpt-4"; //chatGPT model
     const presentation = SlidesApp.create(prompt.substring(0, 100)); // Use the prompt for the filename, limited to 100 characters to avoid errors
     const slide = presentation.getSlides()[0]; // Get the first slide that's automatically created with the presentation
@@ -53,7 +53,7 @@ function generateSlideFromPrompt(prompt = "top f1 teams") {
 }
 
 function getimagePrompt(paragraph = "1. Mercedes-AMG Petronas Formula One Team: This team has been a dominant force in Formula One racing for several years. They have won multiple Constructors' Championships, largely due to the success …") {
-    const API_KEY = "YOUR_API_KEY HERE";
+    const API_KEY = "YOUR_API_KEY_HERE";
     const MODEL_TYPE = "gpt-4"; //chatGPT model
 
     
@@ -90,7 +90,7 @@ function getimagePrompt(paragraph = "1. Mercedes-AMG Petronas Formula One Team: 
 }
 
 function getImageUrl(prompt = "Mercedes-AMG F1") {
-    var apiKey = "YOUR_API_KEY HERE";
+    var apiKey = "YOUR_API_KEY_HERE";
     var searchEngineId = '43bd2b5998b754bf7';
     var query = prompt; // This could be a static query or based on the prompt/content
     var url = "https://www.googleapis.com/customsearch/v1?key=" + apiKey + "&cx=" + searchEngineId + "&searchType=image&q=" + encodeURIComponent(query);
@@ -109,7 +109,7 @@ function getImageUrl(prompt = "Mercedes-AMG F1") {
 }
 
 function generateFlashcardsfromPrompt(prompt) {
-    const API_KEY = "YOUR_API_KEY HERE";
+    const API_KEY = "YOUR_API_KEY_HERE";
     const MODEL_TYPE = "gpt-4"; // ChatGPT model
     const temperature = 1;
     const maxTokens = 150;
